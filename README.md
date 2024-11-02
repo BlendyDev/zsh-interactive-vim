@@ -2,16 +2,16 @@
 
 ## Installation
 
-    1. Install [fzf](https://github.com/junegunn/fzf)
-    2. Install [bat](https://github.com/sharkdp/bat)
-    (Manual)
-    3.M Clone this repo somewhere and source `zsh-interactive-vim.zsh` in your `.zshrc`
-    (Oh-my-zsh plugin)
-    3.P
-    - Run this command
-    `git clone https://github.com/BlendyDev/zsh-interactive-vim ~/.oh-my-zsh/plugins`
-    - Add `zsh-interactive-vim` to your plugins array in your `.zshrc`
-    4. Restart your shell or `source .zshrc`
+1. Install [fzf](https://github.com/junegunn/fzf)
+2. Install [bat](https://github.com/sharkdp/bat)
+(Manual)
+3.M Clone this repo somewhere and source `zsh-interactive-vim.zsh` in your `.zshrc`
+(Oh-my-zsh plugin)
+3.P
+- Run this command
+`git clone https://github.com/BlendyDev/zsh-interactive-vim ~/.oh-my-zsh/plugins`
+- Add `zsh-interactive-vim` to your plugins array in your `.zshrc`
+4. Restart your shell or `source .zshrc`
 
 ## Usage
 
