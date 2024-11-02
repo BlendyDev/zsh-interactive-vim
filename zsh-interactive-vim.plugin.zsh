@@ -131,9 +131,9 @@ ziv-completion() { # zle widget, match "*vim " and execute _ziv_complete, fallba
   local tokens cmd
   tokens=(${(z)LBUFFER}) # parens exclude whitespaces from the array 
   cmd=${tokens[1]}
-  if [[ "$LBUFFER" =~ "^\ *.?vim$" ]]; then # match vim and nvim when cursor is right after them, matching any amount of spaces before
+  if [[ "$LBUFFER" =~ "^\ *${ziv_regex:-.?vim}$" ]]; then # match vim and nvim when cursor is right after them, matching any amount of spaces before
     zle ${__ziv_default_completion:-expand-or-complete}
-  elif [[ "$cmd" =~ ".?vim" ]]; then
+  elif [[ "$cmd" =~ "${ziv_regex:-.?vim}" ]]; then
     _ziv_complete ${tokens[2,${#tokens}]/#\~/$HOME} # perform actual completion (send array of args replacing ~ with $HOME) 
   else 
     zle ${__ziv_default_completion:-expand-or-complete}
