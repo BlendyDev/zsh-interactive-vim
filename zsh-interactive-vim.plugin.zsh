@@ -8,7 +8,6 @@ __ziv_matched_subdir_list() {
     length=$(echo -n "$dir" | wc -c) # dir length stored in length (-n for no newline)
     [[ "$dir" == / ]] && length=0 # account for root edge case
     find -L "$dir" -maxdepth 1  2>/dev/null | cut -b $(( $length + 2 ))- | sed '/^$/d' | while read -r line; do #find subdirs/files at depth one, cut initial "./", delete empty paths and iterate over them
-      [[ "${line[1]}" == "." ]] && continue # ignore paths starting with "."
       echo $line
     done
   else
