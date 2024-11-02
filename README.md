@@ -5,7 +5,7 @@
 #### 1. Install [fzf](https://github.com/junegunn/fzf)
 #### 2. Install [bat](https://github.com/sharkdp/bat)
 #### 3. (Manual)
-- Clone this repo somewhere and source `zsh-interactive-vim.zsh` in your `.zshrc`
+- Clone this repo somewhere and source `zsh-interactive-vim.plugin.zsh` in your `.zshrc`
 #### 3. ([Oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh) plugin)
 - Run this command
 `git clone https://github.com/BlendyDev/zsh-interactive-vim ~/.oh-my-zsh/plugins`
