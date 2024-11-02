@@ -8,7 +8,7 @@
 - Clone this repo somewhere and source `zsh-interactive-vim.zsh` in your `.zshrc`
 #### 3. ([Oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh) plugin)
 - Run this command
-`git clone https://github.com/BlendyDev/zsh-interactive-vim ~/.oh-my-zsh/plugins`
+`git clone https://github.com/BlendyDev/zsh-interactive-vim ~/.oh-my-zsh/plugins/zsh-interactive-vim`
 - Add `zsh-interactive-vim` to your plugins array in your `.zshrc`
 #### 4. Restart your shell or `source .zshrc`
 
