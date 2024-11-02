@@ -61,6 +61,22 @@ _ziv_list_generator() {
   __ziv_matched_subdir_list $(eval echo $(__ziv_current_arg)) | sort #call __ziv_matched_subdir_list on the last [-1] arg unqouted (--flags "path to/dir" -> path to/dir )
 }
 
+_ziv_preview() {
+  local _base base current dir
+  _base=(${(z)1})
+  base=${_base[-1]}
+  [[ $(__ziv_empty_arg) -eq 1 ]] && base="." # fix empty arg
+  [[ "$base" != */ ]] && base=$(dirname -- $base) # remove partial dir/filename
+  [[ "$base" == */ ]] && base="${base%?}" # remove trailing /
+  current=$2
+  dir="$base/$2"
+  if [ -d "$dir" ]; then
+    ls $dir 
+  else
+    $PAGER $dir
+  fi
+}
+
 _ziv_complete() { # perform completion
   setopt localoptions nonomatch
   local l matches fzf tokens base
@@ -75,7 +91,7 @@ _ziv_complete() { # perform completion
   if [ $(echo $l | wc -l) -eq 1 ]; then
     matches=${(q)l} # match the only element in the list (special chars accounted for (q))
   else
-    matches=$(echo $l | FZF_DEFAULT_OPTS="--height 40% --bind '$fzf_bindings' --reverse" fzf | while read -r item; do
+    matches=$(echo $l | __ziv_preview=$(declare -f _ziv_preview) _base=$* ___ziv_empty_arg=$(declare -f __ziv_empty_arg) LBUFFER=$LBUFFER FZF_DEFAULT_OPTS="--height 40% --bind '$fzf_bindings' --reverse" fzf --preview 'eval $__ziv_preview;eval $___ziv_empty_arg; _ziv_preview "$_base" {}' | while read -r item; do
       echo -n "${(q)item} "
     done)
   fi
