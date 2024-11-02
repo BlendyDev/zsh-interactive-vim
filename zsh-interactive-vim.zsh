@@ -70,10 +70,11 @@ _ziv_preview() {
   [[ "$base" == */ ]] && base="${base%?}" # remove trailing /
   current=$2
   dir="$base/$2"
+  export CLICOLOR_FORCE=1 # force colors
   if [ -d "$dir" ]; then
     ls $dir 
   else
-    $PAGER $dir
+    bat --color=always $dir
   fi
 }
 
