@@ -72,9 +72,13 @@ _ziv_preview() {
   dir="$base/$2"
   export CLICOLOR_FORCE=1 # force colors
   if [ -d "$dir" ]; then
-    ls $dir 
+    [ -z "$ziv_dir_preview" ] && ziv_dir_preview="ls"
+    [ -z "$ziv_dir_preview_flags" ] && ziv_dir_preview_flags=()
+    $ziv_dir_preview ${ziv_dir_preview_flags[@]} $dir
   else
-    bat --color=always $dir
+    [ -z "$ziv_file_preview" ] && ziv_file_preview="bat"
+    [ -z "$ziv_file_preview_flags" ] && ziv_file_preview_flags=("--color=always")
+    $ziv_file_preview ${ziv_file_preview_flags[@]} $dir
   fi
 }
 
