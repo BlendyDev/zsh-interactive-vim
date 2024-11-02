@@ -96,7 +96,7 @@ _ziv_complete() { # perform completion
   if [ $(echo $l | wc -l) -eq 1 ]; then
     matches=${(q)l} # match the only element in the list (special chars accounted for (q))
   else
-    matches=$(echo $l | __ziv_preview=$(declare -f _ziv_preview) _base=$* ___ziv_empty_arg=$(declare -f __ziv_empty_arg) LBUFFER=$LBUFFER FZF_DEFAULT_OPTS="--height 40% --bind '$fzf_bindings' --reverse" fzf --preview 'eval $__ziv_preview;eval $___ziv_empty_arg; _ziv_preview "$_base" {}' | while read -r item; do
+    SHELL=$(which zsh) matches=$(echo $l | __ziv_preview=$(declare -f _ziv_preview) _base=$* ___ziv_empty_arg=$(declare -f __ziv_empty_arg) LBUFFER=$LBUFFER FZF_DEFAULT_OPTS="--height 40% --bind '$fzf_bindings' --reverse" fzf --preview 'eval $__ziv_preview;eval $___ziv_empty_arg; _ziv_preview "$_base" {}' | while read -r item; do
       echo -n "${(q)item} "
     done)
   fi
